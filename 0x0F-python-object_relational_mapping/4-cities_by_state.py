@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-search from both tables
+return info from both tables
 """
 
 import MySQLdb
@@ -15,6 +15,7 @@ if __name__ == "__main__":
                          passwd=argv[2],
                          db=argv[3])
 
+    # execute queries
     cursor = db.cursor()
     sql_cmd = """SELECT cities.id, cities.name, states.name
                  FROM states
