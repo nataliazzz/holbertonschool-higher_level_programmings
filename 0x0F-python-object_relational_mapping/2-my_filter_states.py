@@ -1,28 +1,24 @@
 #!/usr/bin/python3
 """
-return matching states
+taken from database
 """
 
 import MySQLdb
 from sys import argv
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    """
+    access database
+    """
 
-    # connect to database
-    db = MySQLdb.connect(host="localhost",
-                         port=3306,
-                         user=argv[1],
-                         passwd=argv[2],
-                         db=argv[3])
+    db = MySQLdb.connect(host="localhost", user=argv[1], port=3306,
+                         passwd=argv[2], db=argv[3])
 
-    # create cursor to exec queries
-    cursor = db.cursor()
-    sql_cmd = """SELECT *
-                 FROM states
-                 WHERE name LIKE '{:s}' ORDER BY id ASC""".format(argv[4])
-    cursor.execute(sql_cmd)
-    for row in cursor.fetchall():
-        if row[1] == argv[4]:
-            print(row)
-    cursor.close()
-    db.close()
+    cur = db.cursor()
+    cur.execute("SELECT * FROM states \
+                 WHERE name LIKE BINARY '{}' \
+                 ORDER BY states.id ASC".format(argv[4]))
+    rows = cur.fetchall()
+
+    for row in rows:
+        print(row)
