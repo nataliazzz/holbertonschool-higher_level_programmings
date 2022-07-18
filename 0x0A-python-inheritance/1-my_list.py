@@ -1,9 +1,18 @@
 #!/usr/bin/python3
 """
-contains class
+list in asc order
 """
 
 
 class MyList(list):
+    """
+    customize class
+    """
+
     def print_sorted(self):
-        print(sorted(self))
+        """
+        prints list
+        """
+
+        if issubclass(MyList, list):
+            print(sorted(self))
