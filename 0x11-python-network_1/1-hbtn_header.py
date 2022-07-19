@@ -1,13 +1,15 @@
 #!/usr/bin/python3
 """
-display value
-usage: ./1-hbtn_header https://intranet.hbtn.io
+sends requuests and shows value
 """
+
 from sys import argv
-import urllib.request
+from urllib.request import Request, urlopen
 
 
 if __name__ == "__main__":
-    req = urllib.request.Request(argv[1])
-    with urllib.request.urlopen(req) as response:
-        print(response.getheader('X-Request-Id'))
+    req = Request(argv[1])
+
+    with urlopen(req) as res:
+        headers = res.info()
+        print(headers.get('X-Request-Id'))
