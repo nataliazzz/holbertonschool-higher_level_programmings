@@ -1,2 +1,3 @@
 #!/bin/bash
-curl -sL "$1" -X GET -D ./header -o ./output; if grep -q "200 OK" ./header; then cat ./output; fi
+Usage: ./1-body.sh 5B0.0.0.0:5000/route_1 ; echo ""
+curl -sL "$1"
