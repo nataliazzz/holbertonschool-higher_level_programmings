@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
 display value
+usage: ./1-hbtn_header https://intranet.hbtn.io
 """
 from sys import argv
 import urllib.request
